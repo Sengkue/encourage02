@@ -458,33 +458,66 @@
             }
         }
 
-        .progress-ring {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+        .progress-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .progress-ring-circle {
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-bg {
             fill: none;
-            stroke: rgba(255, 255, 255, 0.3);
+            stroke: rgba(255, 255, 255, 0.2);
             stroke-width: 8;
             stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-            transition: stroke-dashoffset 0.5s ease;
         }
 
         .progress-ring-fill {
-            stroke: white;
-            stroke-dasharray: 283;
-            stroke-dashoffset: 283;
-            animation: progress-fill 2s ease-in-out forwards;
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.9);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 2s ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        .progress-text {
+            fill: white;
+            font-size: 2rem;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            transform: rotate(90deg);
+            transform-origin: 60px 60px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         @keyframes progress-fill {
-            to {
-                stroke-dashoffset: 113;
+            from {
+                stroke-dashoffset: 314;
             }
+            to {
+                stroke-dashoffset: 157;
+            }
+        }
+
+        @keyframes progress-glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        .progress-ring-fill.animated {
+            animation: progress-fill 2s ease-in-out forwards, progress-glow 3s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
@@ -525,6 +558,15 @@
             
             .advanced-features {
                 grid-template-columns: 1fr;
+            }
+            
+            .progress-ring {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .progress-text {
+                font-size: 1.5rem;
             }
         }
 
@@ -567,6 +609,15 @@
             
             .stat-label {
                 font-size: 0.8rem;
+            }
+            
+            .progress-ring {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .progress-text {
+                font-size: 1.2rem;
             }
         }
 
@@ -637,10 +688,13 @@
 
             <div class="content-grid">
                 <div class="quote-section">
-                    <svg class="progress-ring">
-                        <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
-                        <circle class="progress-ring-fill" cx="50" cy="50" r="45"></circle>
-                    </svg>
+                    <div class="progress-container">
+                        <svg class="progress-ring" viewBox="0 0 120 120">
+                            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-fill" cx="60" cy="60" r="50"></circle>
+                            <text x="60" y="65" class="progress-text">🌟</text>
+                        </svg>
+                    </div>
                     <div class="quote-text" id="mainQuote">ກຳລັງໂຫຼດຄຳສອນແຮງບັນດານໃຈຂອງເຈົ້າ...</div>
                     <div class="quote-author" id="mainAuthor"></div>
                 </div>
@@ -871,9 +925,20 @@
 
         function animateProgressRing() {
             const ring = document.querySelector('.progress-ring-fill');
-            ring.style.animation = 'none';
-            ring.offsetHeight; // Trigger reflow
-            ring.style.animation = 'progress-fill 2s ease-in-out forwards';
+            const text = document.querySelector('.progress-text');
+            
+            // Reset animation
+            ring.classList.remove('animated');
+            ring.style.strokeDashoffset = '314';
+            
+            // Change icon based on content type
+            const icons = ['🌟', '✨', '💫', '⭐', '🌈', '💎', '🔥', '⚡'];
+            text.textContent = icons[Math.floor(Math.random() * icons.length)];
+            
+            // Trigger reflow and start animation
+            ring.offsetHeight;
+            ring.classList.add('animated');
+            ring.style.strokeDashoffset = '157';
         }
 
         // Main functions
@@ -1055,8 +1120,10 @@
                 document.getElementById('streakCount').textContent = stats.streak;
             }
             
-            // Show initial quote
-            getNewQuote();
+            // Show initial quote with animation
+            setTimeout(() => {
+                getNewQuote();
+            }, 500);
             
             // Create ambient particles
             setInterval(() => {
