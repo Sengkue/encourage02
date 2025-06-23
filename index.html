@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ກຳລັງໃຈລາວ - Professional Wellness Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warm-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --success-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --border-radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Lao', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            z-index: -2;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -7s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .quote-section {
+            grid-column: 1 / -1;
+            background: var(--warm-gradient);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            opacity: 0;
+            animation: slideInUp 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .control-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 30px;
+        }
+
+        .control-title {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .action-btn {
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Noto Sans Lao', sans-serif;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        .mood-tracker {
+            background: var(--success-gradient);
+            border-radius: var(--border-radius);
+            padding: 30px;
+        }
+
+        .mood-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mood-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mood-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mood-btn.selected {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: white;
+            transform: scale(1.15);
+        }
+
+        .mood-response {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .mood-response.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .advanced-features {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particle-float 8s infinite linear;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .progress-ring {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 8;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .progress-ring-fill {
+            stroke: white;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            animation: progress-fill 2s ease-in-out forwards;
+        }
+
+        @keyframes progress-fill {
+            to {
+                stroke-dashoffset: 113;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .main-card {
+                padding: 20px;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stats-bar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .mood-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .quote-text {
+                font-size: 1.3rem;
+            }
+            
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .advanced-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .quote-text {
+                font-size: 1.1rem;
+            }
+            
+            .mood-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .mood-btn {
+                padding: 15px;
+                font-size: 2rem;
+            }
+            
+            .action-btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .stat-item {
+                padding: 15px;
+                min-width: 100px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        .typing-effect {
+            border-right: 2px solid white;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-gradient);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <h1 class="main-title">🌸 ກຳລັງໃຈລາວ 🌸</h1>
+                <p class="subtitle">ສູນກາງສຸຂະພາບຈິດແລະການດູແລຕົນເອງແບບມືອາຊີບ</p>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="quoteCount">0</span>
+                    <span class="stat-label">ຄຳຄົມ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="affirmationCount">0</span>
+                    <span class="stat-label">ຄຳຢືນຢັນ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="motivationCount">0</span>
+                    <span class="stat-label">ກຳລັງໃຈ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="streakCount">1</span>
+                    <span class="stat-label">ມື້ຕິດຕໍ່</span>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="quote-section">
+                    <svg class="progress-ring">
+                        <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress-ring-fill" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="quote-text" id="mainQuote">ກຳລັງໂຫຼດຄຳສອນແຮງບັນດານໃຈຂອງເຈົ້າ...</div>
+                    <div class="quote-author" id="mainAuthor"></div>
+                </div>
+
+                <div class="control-panel">
+                    <h3 class="control-title">🎯 ເຄື່ອງມືກຳລັງໃຈ</h3>
+                    <div class="button-grid">
+                        <button class="action-btn" onclick="getNewQuote()">
+                            <span>ຄຳຄົມໃໝ່ 📜</span>
+                        </button>
+                        <button class="action-btn" onclick="getAffirmation()">
+                            <span>ຄຳຢືນຢັນ 💎</span>
+                        </button>
+                        <button class="action-btn" onclick="getMotivation()">
+                            <span>ກຳລັງໃຈ ⚡</span>
+                        </button>
+                        <button class="action-btn" onclick="getRandomWisdom()">
+                            <span>ປັນຍາແບບສຸ່ມ 🔮</span>
+                        </button>
+                        <button class="action-btn" onclick="getMorningBoost()">
+                            <span>ເພີ່ມພະລັງເຊົ້າ ☀️</span>
+                        </button>
+                        <button class="action-btn" onclick="getEveningReflection()">
+                            <span>ສະທ້ອນຄືນແລງ 🌙</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mood-tracker">
+                    <h3 class="mood-title">💝 ມື້ນີ້ເຈົ້າຮູ້ສຶກແນວໃດ?</h3>
+                    <div class="mood-grid">
+                        <button class="mood-btn" onclick="selectMood('😊', 'happy', 'ມີຄວາມສຸກ')">😊</button>
+                        <button class="mood-btn" onclick="selectMood('😔', 'sad', 'ເສົ້າໃສ')">😔</button>
+                        <button class="mood-btn" onclick="selectMood('😤', 'stressed', 'ເຄັ່ງຕຶງ')">😤</button>
+                        <button class="mood-btn" onclick="selectMood('😴', 'tired', 'ເມື່ອຍ')">😴</button>
+                        <button class="mood-btn" onclick="selectMood('🤔', 'confused', 'ສັບສົນ')">🤔</button>
+                        <button class="mood-btn" onclick="selectMood('😌', 'peaceful', 'ສະຫງົບ')">😌</button>
+                    </div>
+                    <div class="mood-response" id="moodResponse"></div>
+                </div>
+            </div>
+
+            <div class="advanced-features">
+                <div class="feature-card" onclick="showBreathingExercise()">
+                    <span class="feature-icon">🫁</span>
+                    <h4 class="feature-title">ການອອກກຳລັງຫາຍໃຈ</h4>
+                    <p class="feature-desc">ເຕັກນິກການຫາຍໃຈເພື່ອຜ່ອນຄາຍ</p>
+                </div>
+                <div class="feature-card" onclick="showGratitudeJournal()">
+                    <span class="feature-icon">📝</span>
+                    <h4 class="feature-title">ບັນທຶກຄວາມກະຕັນຍູ</h4>
+                    <p class="feature-desc">ບັນທຶກສິ່ງດີໆໃນຊີວິດ</p>
+                </div>
+                <div class="feature-card" onclick="showProgressTracking()">
+                    <span class="feature-icon">📊</span>
+                    <h4 class="feature-title">ຕິດຕາມຄວາມກ້າວໜ້າ</h4>
+                    <p class="feature-desc">ເບິ່ງການພັດທະນາຂອງເຈົ້າ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Enhanced data with more profound Lao wisdom
+        const quotes = [
+            { text: "ຄວາມສຸກແມ່ນການເລືອກ. ເລືອກຄວາມສຸກທຸກມື້", author: "ຄຳສອນລາວ" },
+            { text: "ຂ້າງໜ້າແມ່ນແສງສະຫວ່າງ, ຢ່າໄປຫລຽວຫລັງ", author: "ສະຕິປັນຍາລາວ" },
+            { text: "ໃຈເຂັ້ມແຂງ ຄືພູເຂົາ, ບໍ່ຫວັ່ນໄຫວຕໄລພາຍຸ", author: "ຄຳສອນບູຮານ" },
+            { text: "ທຸກບັນຫາມີທາງອອກ, ສຳຄັນຢູ່ການບໍ່ຍອມແພ້", author: "ປັນຍາລາວ" },
+            { text: "ມື້ວານຜ່ານໄປແລ້ວ, ມື້ນີ້ແມ່ນຊີວິດໃໝ່", author: "ປະສົບການຊີວິດ" },
+            { text: "ຄົນເຮົາສາມາດທຳໄດ້ທຸກຢ່າງ ຖ້າມີກຳລັງໃຈ", author: "ຄວາມເຊື່ອລາວ" },
+            { text: "ຄວາມຫຍຸ້ງຍາກແມ່ນບົດຮຽນ, ບໍ່ແມ່ນຈຸດຈົບ", author: "ປັນຍາຊົນລາວ" },
+            { text: "ຮອຍຍິ້ມນຶ່ງສາມາດປ່ຽນໂລກໄດ້", author: "ແນວຄິດບວກ" },
+            { text: "ຄົນດີມີຄວາມສຸກ, ຄົນເຂັ້ມແຂງມີອະນາຄົດ", author: "ປະເພນີລາວ" },
+            { text: "ບໍ່ມີລົມແຮງໃດທີ່ພັດລົ້ມໄດ້ຕົ້ນໄຜ່ທີ່ຍຸດຍືດ", author: "ສຸພາສິດລາວ" },
+            { text: "ຄວາມເມດຕາແມ່ນພະລັງທີ່ຍິ່ງໃຫຍ່ທີ່ສຸດ", author: "ພຸດທະສາສະໜາ" },
+            { text: "ການໃຫ້ອະໄພແມ່ນຂອງຂວັນທີ່ດີທີ່ສຸດສຳລັບຕົນເອງ", author: "ສະຕິປັນຍາ" }
+        ];
+
+        const affirmations = [
+            "ຂ້ອຍເຂັ້ມແຂງ ແລະ ສາມາດເອົາຊະນະທຸກຢ່າງໄດ້",
+            "ຂ້ອຍມີຄຸນຄ່າ ແລະ ສົມຄວນໄດ້ຮັບຄວາມສຸກ", 
+            "ມື້ນີ້ຂ້ອຍເລືອກຄວາມສຸກ ແລະ ຄວາມໝັ້ນໃຈ",
+            "ຂ້ອຍມີພະລັງທີ່ຈະປ່ຽນແປງຊີວິດໃຫ້ດີຂຶ້ນ",
+            "ທຸກມື້ຂ້ອຍເຕີບໂຕ ແລະ ເຂັ້ມແຂງຂຶ້ນ",
+            "ຂ້ອຍເຊື່ອໃນຕົວຂ້ອຍເອງ ແລະ ຄວາມສາມາດຂອງຂ້ອຍ",
+            "ຂ້ອຍມີຄວາມທົນທານ ແລະ ເອົາຊະນະທຸກສິ່ງທ້າທາຍໄດ້",
+            "ຂ້ອຍແຜ່ພະລັງບວກ ແລະ ດຶງດູດສິ່ງດີໆເຂົ້າມາ",
+            "ຂ້ອຍຢູ່ບ່ອນທີ່ຄວນຢູ່ໃນເວລານີ້",
+            "ຂ້ອຍຍອມຮັບໂອກາດໃໝ່ດ້ວຍຄວາມໝັ້ນໃຈ",
+            "ຂ້ອຍເປັນນັກສູ້ທີ່ບໍ່ເຄີຍຍອມແພ້",
+            "ຄວາມຮັກແລະເມດຕາເລີ່ມຕົ້ນຈາກຕົວຂ້ອຍເອງ"
+        ];
+
+        const motivations = [
+            "ທຸກຄົນທີ່ຊຳນານແມ່ນເລີ່ມຈາກການເປັນຄົນໃໝ່. ສູ້ຕໍ່ໄປ! 💪",
+            "ຄວາມຝັນຂອງເຈົ້າມີຄຸນຄ່າ. ໄລ່ຕາມມັນດ້ວຍຄວາມກະຕືລືລົ້ນ! ✨",
+            "ການກ້າວນ້ອຍໆທຸກມື້ ນຳໄປສູ່ການປ່ຽນແປງໃຫຍ່",
+            "ເຈົ້າຜ່ານມື້ທີ່ຫຍຸ້ງຍາກທີ່ສຸດມາໄດ້ 100%. ເຈົ້າເຂັ້ມກວ່າທີ່ຄິດ! 🌟",
+            "ການກັບຄືນມາແມ່ນເຂັ້ມແຂງກວ່າການລົ້ມລົງສະເໝີ",
+            "ເຈົ້າບໍ່ຈຳເປັນຕ້ອງສົມບູນແບບ, ພຽງແຕ່ເປັນຕົວເຈົ້າເອງ",
+            "ການກ້າວໜ້າ, ບໍ່ແມ່ນຄວາມສົມບູນແບບ, ແມ່ນເປົ້າໝາຍ",
+            "ຄວາມສາມາດຂອງເຈົ້າບໍ່ຈຳກັດ. ຢ່າຍອມແພ້ຕົວເອງ! 🚀",
+            "ທຸກມື້ແມ່ນໂອກາດໃໝ່ເພື່ອກາຍເປັນຄົນທີ່ເຈົ້າຢາກເປັນ",
+            "ເຈົ້າກ້າຫານກວ່າທີ່ເຊື່ອ ແລະ ເຂັ້ມແຂງກວ່າທີ່ຄິດ 🦁",
+            "ຄວາມຫຍຸ້ງຍາກແມ່ນໂອກາດເພື່ອສະແດງໃຫ້ເຫັນວ່າເຈົ້າເຂັ້ມແຂງ",
+            "ເສັ້ນທາງທີ່ຍາວທີ່ສຸດເລີ່ມຕົ້ນດ້ວຍບາດກ້າວທຳອິດ 🌈"
+        ];
+
+        const morningBoosts = [
+            "ມື້ນີ້ແມ່ນວັນໃໝ່ທີ່ເຕັມໄປດ້ວຍໂອກາດ! ເຈົ້າພ້ອມແລ້ວ! ☀️",
+            "ແສງແຮງຂອງເຈົ້າສາມາດເຮັດໃຫ້ຄົນອື່ນມີຄວາມສຸກໄດ້ 🌅",
+            "ຂື້ນຂ້າດ້ວຍຄວາມກະຕັນຍູ - ຊີວິດແມ່ນຂອງຂວັນທີ່ງາມ 🎁",
+            "ມື້ນີ້ເຈົ້າຈະເຮັດສິ່ງພິເສດ - ເຊື່ອໃນຕົວເອງ! ⭐",
+            "ພະລັງງານຂອງເຈົ້າມີຄຸນຄ່າ ແລະ ຈະສ້າງຄວາມແຕກຕ່າງ 🔥"
+        ];
+
+        const eveningReflections = [
+            "ມື້ນີ້ເຈົ້າໄດ້ເຮັດໃຫ້ໂລກດີຂຶ້ນດ້ວຍການມີຢູ່ 🌙",
+            "ໃຫ້ອະໄພຕົວເອງສຳລັບສິ່ງທີ່ບໍ່ສົມບູນແບບ - ເຈົ້າກຳລັງຮຽນຮູ້ ✨",
+            "ຂອບໃຈຕົວເອງສຳລັບຄວາມພະຍາຍາມຂອງມື້ນີ້ 💝",
+            "ພັກຜ່ອນໃຫ້ເຕັມທີ່ - ເຈົ້າສົມຄວນໄດ້ຮັບການພັກຜ່ອນ 😴",
+            "ມື້ພຸ່ງນີ້ຈະເປັນມື້ໃໝ່ທີ່ເຕັມໄປດ້ວຍຄວາມເປັນໄປໄດ້ 🌟"
+        ];
+
+        const moodResponses = {
+            happy: "ດີຫຼາຍເດີ້! ສືບຕໍ່ແຜ່ພະລັງບວກນີ້ໄປຕໍ່! ເຈົ້າແມ່ນແສງສະຫວ່າງຂອງໂລກ! ✨🌟",
+            sad: "ເສົ້າໃສບາງຄັ້ງກໍ່ປົກກະຕິ. ຈື່ໄວ້ວ່າຄວາມຮູ້ສຶກນີ້ຈະຜ່ານໄປ, ມື້ທີ່ສົດໃສກຳລັງຈະມາເຖິງ 🌈💙",
+            stressed: "ຫາຍໃຈເຂົ້າເລິກໆ. ເຈົ້າທຳໄດ້! ລອງມຸ້ງເປົ້າໃສ່ສິ່ງນຶ່ງໃນແຕ່ລະເວລາ. ເຈົ້າເຂັ້ມແຂງ! 🧘‍♀️💪",
+            tired: "ການພັກຜ່ອນກໍ່ສຳຄັນ. ຮັກແພງຕົວເອງ ແລະ ໃຫ້ເວລາທີ່ຈຳເປັນ. ພັກຜ່ອນແລ້ວກັບມາສູ້ອີກ 😴💤",
+            confused: "ຄວາມບໍ່ແນ່ໃຈບາງຄັ້ງກໍ່ເປັນເລື່ອງທົມມະດາ. ເຊື່ອໃຈຕົວເອງ - ເຈົ້າຈະຫາທາງໄດ້! 🧭⭐",
+            peaceful: "ຄວາມຮູ້ສຶກນີ້ງາມຫຼາຍ! ເພີດເພີນກັບຊ່ວງເວລາສະຫງົບນີ້. ເຈົ້າສົມດຸນແລ້ວ 🕊️🌸"
+        };
+
+        // Counters for tracking usage
+        let stats = {
+            quotes: 0,
+            affirmations: 0,
+            motivations: 0,
+            streak: parseInt(localStorage.getItem('dailyStreak') || '1')
+        };
+
+        // Helper functions
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function updateStats(type) {
+            if (type === 'quotes') {
+                stats.quotes++;
+                document.getElementById('quoteCount').textContent = stats.quotes;
+            } else if (type === 'affirmations') {
+                stats.affirmations++;
+                document.getElementById('affirmationCount').textContent = stats.affirmations;
+            } else if (type === 'motivations') {
+                stats.motivations++;
+                document.getElementById('motivationCount').textContent = stats.motivations;
+            }
+            
+            // Save to localStorage for persistence
+            localStorage.setItem('stats', JSON.stringify(stats));
+            
+            // Update streak
+            const today = new Date().toDateString();
+            const lastVisit = localStorage.getItem('lastVisit');
+            if (lastVisit !== today) {
+                const yesterday = new Date(Date.now() - 86400000).toDateString();
+                if (lastVisit === yesterday) {
+                    stats.streak++;
+                } else if (lastVisit && lastVisit !== today) {
+                    stats.streak = 1;
+                }
+                localStorage.setItem('lastVisit', today);
+                localStorage.setItem('dailyStreak', stats.streak.toString());
+                document.getElementById('streakCount').textContent = stats.streak;
+            }
+        }
+
+        function typeWriter(element, text, speed = 50) {
+            element.innerHTML = '';
+            element.classList.add('typing-effect');
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typing-effect');
+                }
+            }
+            type();
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = Math.random() * 8 + 5 + 's';
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 13000);
+            }
+        }
+
+        function animateProgressRing() {
+            const ring = document.querySelector('.progress-ring-fill');
+            ring.style.animation = 'none';
+            ring.offsetHeight; // Trigger reflow
+            ring.style.animation = 'progress-fill 2s ease-in-out forwards';
+        }
+
+        // Main functions
+        function getNewQuote() {
+            const quote = getRandomItem(quotes);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, `"${quote.text}"`);
+            setTimeout(() => {
+                typeWriter(authorElement, `— ${quote.author}`);
+            }, 1000);
+            
+            updateStats('quotes');
+            animateProgressRing();
+            createParticles();
+            showNotification('ໄດ້ຮັບຄຳຄົມໃໝ່ແລ້ວ! 📜');
+        }
+
+        function getAffirmation() {
+            const affirmation = getRandomItem(affirmations);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, affirmation);
+            setTimeout(() => {
+                typeWriter(authorElement, '— ຄຳຢືນຢັນສຳລັບເຈົ້າ');
+            }, 1000);
+            
+            updateStats('affirmations');
+            animateProgressRing();
+            createParticles();
+            showNotification('ຄຳຢືນຢັນໃໝ່ພ້ອມແລ້ວ! 💎');
+        }
+
+        function getMotivation() {
+            const motivation = getRandomItem(motivations);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, motivation);
+            setTimeout(() => {
+                typeWriter(authorElement, '— ເພີ່ມກຳລັງໃຈ');
+            }, 1000);
+            
+            updateStats('motivations');
+            animateProgressRing();
+            createParticles();
+            showNotification('ກຳລັງໃຈໃໝ່ມາແລ້ວ! ⚡');
+        }
+
+        function getRandomWisdom() {
+            const allWisdom = [...quotes, ...affirmations.map(a => ({text: a, author: 'ສະຕິປັນຍາ'})), 
+                             ...motivations.map(m => ({text: m, author: 'ແຮງບັນດານໃຈ'}))];
+            const wisdom = getRandomItem(allWisdom);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, wisdom.text);
+            setTimeout(() => {
+                typeWriter(authorElement, `— ${wisdom.author}`);
+            }, 1000);
+            
+            animateProgressRing();
+            createParticles();
+            showNotification('ປັນຍາແບບສຸ່ມ! 🔮');
+        }
+
+        function getMorningBoost() {
+            const boost = getRandomItem(morningBoosts);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, boost);
+            setTimeout(() => {
+                typeWriter(authorElement, '— ເພີ່ມພະລັງເຊົ້າ');
+            }, 1000);
+            
+            animateProgressRing();
+            createParticles();
+            showNotification('ເຊົ້ານີ້ມີພະລັງ! ☀️');
+        }
+
+        function getEveningReflection() {
+            const reflection = getRandomItem(eveningReflections);
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, reflection);
+            setTimeout(() => {
+                typeWriter(authorElement, '— ສະທ້ອນຄືນແລງ');
+            }, 1000);
+            
+            animateProgressRing();
+            createParticles();
+            showNotification('ເວລາສະທ້ອນຄືນ 🌙');
+        }
+
+        function selectMood(emoji, mood, label) {
+            // Remove selected class from all mood buttons
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked button
+            event.target.classList.add('selected');
+            
+            // Show response
+            const responseDiv = document.getElementById('moodResponse');
+            responseDiv.innerHTML = `<strong>ເຈົ້າເລືອກ: ${emoji} ${label}</strong><br><br>${moodResponses[mood]}`;
+            responseDiv.classList.add('show');
+            
+            createParticles();
+            showNotification(`ບັນທຶກອາລົມ: ${emoji} ${label}`);
+        }
+
+        // Advanced feature functions
+        function showBreathingExercise() {
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, 'ຫາຍໃຈເຂົ້າ 4 ນາທີ... ຍຸດ 4 ນາທີ... ຫາຍໃຈອອກ 4 ນາທີ... ຍຸດ 4 ນາທີ...');
+            setTimeout(() => {
+                typeWriter(authorElement, '— ເຕັກນິກການຫາຍໃຈ 4-4-4-4');
+            }, 2000);
+            
+            animateProgressRing();
+            showNotification('ເລີ່ມການອອກກຳລັງຫາຍໃຈ 🫁');
+        }
+
+        function showGratitudeJournal() {
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            typeWriter(quoteElement, 'ມື້ນີ້ຂ້ອຍຂອບໃຈສຳລັບ... (ຄິດເຖິງ 3 ສິ່ງທີ່ເຈົ້າຂອບໃຈ)');
+            setTimeout(() => {
+                typeWriter(authorElement, '— ການຝຶກຄວາມກະຕັນຍູ');
+            }, 2000);
+            
+            animateProgressRing();
+            showNotification('ເວລາຂອບໃຈ 📝');
+        }
+
+        function showProgressTracking() {
+            const quoteElement = document.getElementById('mainQuote');
+            const authorElement = document.getElementById('mainAuthor');
+            
+            const totalUsage = stats.quotes + stats.affirmations + stats.motivations;
+            typeWriter(quoteElement, `ເຈົ້າໄດ້ໃຊ້ແອັບນີ້ ${totalUsage} ຄັ້ງແລ້ວ! ມື້ຕິດຕໍ່: ${stats.streak} ມື້. ສຸດຍອດ! 🎉`);
+            setTimeout(() => {
+                typeWriter(authorElement, '— ສະຖິຕິຄວາມກ້າວໜ້າຂອງເຈົ້າ');
+            }, 2000);
+            
+            animateProgressRing();
+            showNotification('ເບິ່ງຄວາມກ້າວໜ້າ 📊');
+        }
+
+        // Initialize the app
+        window.addEventListener('load', () => {
+        // Load saved stats
+        function loadStats() {
+            const savedStats = localStorage.getItem('stats');
+            if (savedStats) {
+                const parsed = JSON.parse(savedStats);
+                stats.quotes = parsed.quotes || 0;
+                stats.affirmations = parsed.affirmations || 0;
+                stats.motivations = parsed.motivations || 0;
+                
+                document.getElementById('quoteCount').textContent = stats.quotes;
+                document.getElementById('affirmationCount').textContent = stats.affirmations;
+                document.getElementById('motivationCount').textContent = stats.motivations;
+            }
+        }
+            
+            // Check streak
+            const today = new Date().toDateString();
+            const lastVisit = localStorage.getItem('lastVisit');
+            if (lastVisit === today) {
+                document.getElementById('streakCount').textContent = stats.streak;
+            }
+            
+            // Show initial quote
+            getNewQuote();
+            
+            // Create ambient particles
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    createParticles();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
